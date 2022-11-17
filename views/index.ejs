@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <title>SQLLite3-BREAD-20</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title">BREAD(Browse, Read, Edit, Add, Delete)</div>
+      <div class="title2">Filters</div>
+
+      <div class="form">
+        <form action="" method="get">
+        <div class="inputfield">
+          <input type="checkbox" id="id" name="id" value="ID" />
+          <label for="id"> ID</label>
+          <input type="text" placeholder="ID" /><br />
+        </div>
+
+        <div class="inputfield">
+          <input type="checkbox" id="string" name="string" value="String" />
+          <label for="string"> String</label>
+          <input type="text" placeholder="String" /><br />
+        </div>
+
+        <div class="inputfield">
+          <input type="checkbox" id="integer" name="integer" value="Integer" />
+          <label for="integer"> Integer</label>
+          <input type="text" placeholder="Integer" /><br />
+        </div>
+
+        <div class="inputfield">
+          <input type="checkbox" id="float" name="float" value="Float" />
+          <label for="float"> Float</label>
+          <input type="text" placeholder="Float" /><br />
+        </div>
+
+        <div class="inputfield">
+          <input type="checkbox" id="date" name="date" value="Date" />
+          <label for="date"> Date</label>
+          <input type="date" placeholder="Start Date" /><br />
+          <label for="date"></label>
+          <input type="date" placeholder="End Date" /><br />
+
+        </div>
+
+        <div class="inputfield">
+          <input type="checkbox" id="date" name="date" value="Date" />
+          <label for="boolean"> Boolean</label>
+          <select name="boolean" id="boolean">
+            <option selected disabled>Choose the boolean ...</option>
+            <option value="true">True</option>
+            <option value="false">False</option>
+          </select>
+        </div>
+
+        <div class="inputfield">
+          <button type="submit">Search</button>
+          
+        </div>
+      </form>
+
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>String</th>
+            <th>Integer</th>
+            <th>Float</th>
+            <th>Date</th>
+            <th>Boolean</th>
+            <th>Actions</th>
+          </tr>
+
+          <% dataUser.forEach((user, index)=>{ %>
+          <tr>
+            <td><%= user.ID %></td>
+            <td><%= user.stringNama %></td>
+            <td><%= user.integerAngka ? user.integerAngka : 0 %></td>
+            <td><%= user.floatAngka %></td>
+            <td><%= user.tanggalDate ? moment(user.tanggalDate).format('DD MMM YYYY') : "empty" %></td>
+            <td><%= user.booleanBoolean ? true : false %></td>
+            <td>
+              <a id= 'btn-edit' href="/edit/<%= user.ID %>">Edit</a>
+              <a id= 'btn-delete' href="/delete/<%= user.ID %>">Delete</a>
+            </td>
+          </tr>
+          <% }) %>
+        </table>
+        <a id="btn-add" href="/add">Add</a>
+      </div>
+    </div>
+  </body>
+</html>
