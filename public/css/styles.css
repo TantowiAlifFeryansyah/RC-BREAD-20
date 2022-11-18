@@ -10,27 +10,27 @@ body {
 }
 
 .wrapper {
-    margin: 20px auto;
+  margin: 20px auto;
 }
 
 .wrapper .title {
-    font-size: 30px;
-    font-weight: 900;
-    color: #252525;
+  font-size: 30px;
+  font-weight: 900;
+  color: #252525;
 }
 
 .wrapper .title2 {
-    font-size: 25px;
-    font-weight: 700;
-    margin-bottom: 25px;
-    color: #252525;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #252525;
 }
 
 .wrapper .title3 {
-    font-size: 30px;
-    font-weight: 900;
-    margin-bottom: 25px;
-    color: #252525;
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 25px;
+  color: #252525;
 }
 
 .wrapper {
@@ -84,48 +84,47 @@ body {
 }
 
 .wrapper .form .inputfield input[type="date"] {
-    width: 11%;
-    padding: 10px 18px;
-    margin: 2px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-left: 15px;
-  }
+  width: 11%;
+  padding: 10px 18px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-left: 15px;
+}
 
-  .wrapper .form .inputfield input[type="date-end"] {
-    width: 11%;
-    padding: 10px 18px;
-    margin: 2px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-left: 15px;
-  }
+.wrapper .form .inputfield input[type="date-end"] {
+  width: 11%;
+  padding: 10px 18px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-left: 15px;
+}
 
 .wrapper .form .inputfield select {
-    width: 50%;
-    padding: 10px 18px;
-    margin: 2px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-left: 15px;
-  }
-  
+  width: 50%;
+  padding: 10px 18px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-left: 15px;
+}
 
 .wrapper .form .inputfield button {
-    /* width: 10%; */
-    background-color: #0666d4;
-    color: white;
-    padding: 12px 16px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  /* width: 10%; */
+  background-color: #0666d4;
+  color: white;
+  padding: 12px 16px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 table {
@@ -133,16 +132,47 @@ table {
   border-spacing: 0;
   width: 57%;
   border: 1px solid #f2f2f2;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
-th, td {
-text-align: left;
-padding: 16px;
+th,
+td {
+  text-align: left;
+  padding: 16px;
 }
 
-tr:nth-child(even){
+tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+.pagination {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.pagination a {
+  font-size: 14px;
+  color: white;
+  float: left;
+  padding: 6px 14px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+  background-color: #0660d4;
+}
+
+a.prev, 
+a.next {
+  font-size: 14px;
+  font-weight: bold;
+  color: #0660d4;
+  background-color: white;
+}
+
+.pagination a.active {
+  background-color: white;
+  color: #0660d4;
+  border: 1px solid #ddd;
 }
 
 #btn-add {
@@ -154,7 +184,6 @@ tr:nth-child(even){
   cursor: pointer;
   text-decoration: none;
   font-size: 15px;
-
 }
 
 #btn-edit {

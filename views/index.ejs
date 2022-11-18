@@ -78,7 +78,7 @@
           <% dataUser.forEach((user, index)=>{ %>
           <tr>
             <td><%= user.ID %></td>
-            <td><%= user.stringNama %></td>
+            <td><%= user.stringNama ? user.stringNama : 'empty' %></td>
             <td><%= user.integerAngka ? user.integerAngka : 0 %></td>
             <td><%= user.floatAngka %></td>
             <td><%= user.tanggalDate ? moment(user.tanggalDate).format('DD MMM YYYY') : "empty" %></td>
@@ -90,8 +90,20 @@
           </tr>
           <% }) %>
         </table>
+
+        <div class="pagination">
+          <a href="#" class="prev">Previous</a>
+          <% for (let i = 1; i <= totalPages; i++){ %>
+          <a class="active<%= i == page ? 'active' : '' %>" href="/?page=<%= i%>"><%= i%></a>
+          <% } %>
+          <a href="#" class="next">Next</a>
+
+        </div>
+        <br>
+        
         <a id="btn-add" href="/add">Add</a>
       </div>
     </div>
+
   </body>
 </html>
