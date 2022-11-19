@@ -83,26 +83,42 @@ body {
   font-size: 15px;
 }
 
+
+.wrapper .form .inputfield #startdate {
+  width: 11%;
+  padding: 10px 18px;
+  margin-top: 2px;
+  margin-left: 15px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.wrapper .form .inputfield .to {
+  margin: 0 120px;
+  font-size: 16px;
+}
+.wrapper .form .inputfield #enddate {
+  width: 11%;
+  padding: 10px 18px;
+  margin-bottom: 2px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-left: 30px;
+}
+
 .wrapper .form .inputfield input[type="date"] {
   width: 11%;
   padding: 10px 18px;
-  margin: 2px 0;
+  margin-top: 2px;
+  margin-left: 15px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  margin-left: 15px;
-}
-
-.wrapper .form .inputfield input[type="date-end"] {
-  width: 11%;
-  padding: 10px 18px;
-  margin: 2px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  margin-left: 15px;
 }
 
 .wrapper .form .inputfield select {
@@ -125,6 +141,32 @@ body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.wrapper .form .inputfield button:hover {
+  color: rgb(255, 187, 0);
+  font-weight: bold;
+
+}
+
+#reset {
+  /* width: 10%; */
+  background-color: rgb(255, 187, 0);
+  color: white;
+  padding: 12px 16px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+#reset:hover {
+  /* width: 10%; */
+  color: #0666d4;
+  font-weight: bold;
 }
 
 table {
@@ -161,7 +203,7 @@ tr:nth-child(even) {
   background-color: #0660d4;
 }
 
-a.prev, 
+a.prev,
 a.next {
   font-size: 14px;
   font-weight: bold;
@@ -197,6 +239,10 @@ a.next {
   font-size: 15px;
 }
 
+#btn-edit:hover {
+  color: rgb(235, 5, 5);
+}
+
 #btn-delete {
   background-color: rgb(235, 5, 5);
   color: white;
@@ -207,4 +253,8 @@ a.next {
   text-decoration: none;
   font-size: 15px;
   margin-left: 5px;
+}
+
+#btn-delete:hover {
+  color: rgb(5, 126, 5);
 }

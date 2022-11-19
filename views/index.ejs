@@ -16,40 +16,47 @@
       <div class="form">
         <form action="" method="get">
         <div class="inputfield">
-          <input type="checkbox" id="id" name="id" value="ID" />
+          <input type="checkbox" id="id" name="idcheck" value="ID" />
           <label for="id"> ID</label>
-          <input type="text" placeholder="ID" /><br />
+          <input type="text" name="id" placeholder="ID" /><br />
         </div>
 
         <div class="inputfield">
-          <input type="checkbox" id="string" name="string" value="String" />
+          <input type="checkbox" id="string" name="stringcheck" value="String" />
           <label for="string"> String</label>
-          <input type="text" placeholder="String" /><br />
+          <input type="text" name="string" placeholder="String" /><br />
         </div>
 
         <div class="inputfield">
-          <input type="checkbox" id="integer" name="integer" value="Integer" />
+          <input type="checkbox" id="integer" name="integercheck" value="Integer" />
           <label for="integer"> Integer</label>
-          <input type="text" placeholder="Integer" /><br />
+          <input type="text" name="integer" placeholder="Integer" /><br />
         </div>
 
         <div class="inputfield">
-          <input type="checkbox" id="float" name="float" value="Float" />
+          <input type="checkbox" id="float" name="floatcheck" value="Float" />
           <label for="float"> Float</label>
-          <input type="text" placeholder="Float" /><br />
+          <input type="text" name="float" placeholder="Float" /><br />
         </div>
 
         <div class="inputfield">
-          <input type="checkbox" id="date" name="date" value="Date" />
+          <input type="checkbox" id="date" name="datecheck" value="Date" />
           <label for="date"> Date</label>
-          <input type="date" placeholder="Start Date" /><br />
-          <label for="date"></label>
-          <input type="date" placeholder="End Date" /><br />
-
+          <input id="startdate" type="date" name="startdate" placeholder="Start Date" /><br />
         </div>
 
         <div class="inputfield">
-          <input type="checkbox" id="date" name="date" value="Date" />
+          <span class="to" >to</span>
+        </div>
+
+        <div class="inputfield">
+          <a href=""></a>
+          <label for="date"></label>
+          <input id="enddate" type="date" name="enddate" placeholder="End Date" /><br />
+        </div>
+
+        <div class="inputfield">
+          <input type="checkbox" id="boolean" name="booleancheck" value="Date" />
           <label for="boolean"> Boolean</label>
           <select name="boolean" id="boolean">
             <option selected disabled>Choose the boolean ...</option>
@@ -60,6 +67,7 @@
 
         <div class="inputfield">
           <button type="submit">Search</button>
+          <a id="reset" href="/" type="reset">Reset</a>
           
         </div>
       </form>
@@ -79,8 +87,8 @@
           <tr>
             <td><%= user.ID %></td>
             <td><%= user.stringNama ? user.stringNama : 'empty' %></td>
+            <td><%= user.floatAngka ? user.floatAngka : 0 %></td>
             <td><%= user.integerAngka ? user.integerAngka : 0 %></td>
-            <td><%= user.floatAngka %></td>
             <td><%= user.tanggalDate ? moment(user.tanggalDate).format('DD MMM YYYY') : "empty" %></td>
             <td><%= user.booleanBoolean ? true : false %></td>
             <td>

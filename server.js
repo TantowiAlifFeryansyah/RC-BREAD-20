@@ -22,25 +22,71 @@ app.set('view engine', 'ejs')
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.get('/', (req, res) => {
-//     db.all(`SELECT * FROM Users`, (err, rows) => {
-//         if (err) return console.log('gagal ambil data', err);
-//         res.render('index', { dataUser: rows, moment })
-//     })
-// })
-
 app.get('/', (req, res) => {
+
+    const params = [];
+    const values = [];
+
+    if (req.query.id && req.query.idcheck) {
+        params.push(`ID = ?`)
+        values.push(req.query.id)
+    }
+
+    if (req.query.string && req.query.stringcheck) {
+        params.push(`stringNama = ?`)
+        values.push(req.query.string)
+    }
+
+    if (req.query.integer && req.query.integercheck) {
+        params.push(`integerAngka = ?`)
+        values.push(Number(req.query.integer))
+    }
+
+    if (req.query.float && req.query.floatcheck) {
+        params.push(`floatAngka = ?`)
+        values.push(parseFloat(req.query.float))
+    }
+
+    if (req.query.datecheck) {
+        if (req.query.startdate != '' && req.query.enddate != '') {
+            params.push(`tanggalDate BETWEEN ? AND ?`)
+            values.push(req.query.startdate)
+            values.push(req.query.enddate)
+        }
+        else if (req.query.startdate != '') {
+            params.push(`tanggalDate >= ?`)
+            values.push(req.query.startdate)
+        }
+        else if (req.query.enddate != '') {
+            params.push(`tanggalDate <= ?`)
+            values.push(req.query.enddate)
+        }
+    }
+
+    if (req.query.boolean && req.query.booleancheck) {
+        params.push(`booleanBoolean = ?`)
+        values.push(JSON.parse(req.query.boolean))
+    }
+
     const page = req.query.page || 1
     const limit = 3;
-    // const offset = 0
     const offset = (page - 1) * limit
 
-    db.all(`SELECT count(*) As total from Users`, (err, data) => {
+    let sql = `SELECT count(*) As total from Users `
+    if (params.length > 0)
+        sql += `WHERE ${params.join(' AND ')}`
+
+    db.all(sql, values, (err, data) => {
         if (err) return console.log('gagal hitung data', err);
         const total = data[0].total
         const totalPages = Math.ceil(total / limit)
-        // console.log(totalPages);
-        db.all(`SELECT * FROM Users LIMIT ? offset ?`, [limit, offset], (err, rows) => {
+
+        sql = `SELECT * FROM Users `
+        if (params.length > 0)
+            sql += `WHERE ${params.join(' AND ')}`
+
+        sql += `LIMIT ? offset ?`
+        db.all(sql, [...values, limit, offset], (err, rows) => {
             if (err) return console.log('gagal ambil data', err);
             res.render('index', { dataUser: rows, page, moment, totalPages })
         })
@@ -53,10 +99,17 @@ app.get('/add', (req, res) => {
 
 app.post('/add', (req, res) => {
     const { string, integer, float, date, boolean } = req.body
-    db.run(`INSERT INTO Users (stringNama, integerAngka, floatAngka, tanggalDate, booleanBoolean) VALUES (?,?,?,?,?)`, [string, parseFloat(float), Number(integer), date, JSON.parse(boolean)], (err) => {
-        if (err) return console.log('gagal ambil data', err);
-        res.redirect('/')
-    })
+    if (boolean) {
+        db.run(`INSERT INTO Users (stringNama, integerAngka, floatAngka, tanggalDate, booleanBoolean) VALUES (?,?,?,?,?)`, [string, parseFloat(float), Number(integer), date, JSON.parse(boolean)], (err) => {
+            if (err) return console.log('gagal ambil data', err);
+            res.redirect('/')
+        })
+    } else {
+        db.run(`INSERT INTO Users (stringNama, integerAngka, floatAngka, tanggalDate) VALUES (?,?,?,?)`, [string, parseFloat(float), Number(integer), date], (err) => {
+            if (err) return console.log('gagal ambil data', err);
+            res.redirect('/')
+        })
+    }
 })
 
 app.get('/delete/:id', (req, res) => {
